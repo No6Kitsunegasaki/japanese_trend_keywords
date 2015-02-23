@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns="http://purl.org/rss/1.0/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xml:lang="ja">
+
+<channel rdf:about="">
+    <title>チャンネルタイトルdummy2</title>
+    <link>チャンネルリンクdummy2</link>
+    <description>チャンネル本文dummy2</description>
+    <items>
+    <rdf:Seq>
+        <rdf:li rdf:resource="チャンネルアイテムリソースummy2-1"/>
+        <rdf:li rdf:resource="チャンネルアイテムリソースummy2-2"/>
+    </rdf:Seq>
+    </items>
+</channel>
+<item rdf:about="アイテムrdfaboutdummy2-1">
+    <title>アイテムタイトルdummy2-1</title>
+    <link>アイテムリンクdummy2-1</link>
+    <description>アイテム本文dummy2-1</description>
+</item>
+<item rdf:about="アイテムrdfaboutdummy2-2">
+    <title>アイテムタイトルdummy2-2</title>
+    <link>アイテムリンクdummy2-2</link>
+    <description>アイテム本文dummy2-2</description>
+</item>
+</rdf:RDF>
