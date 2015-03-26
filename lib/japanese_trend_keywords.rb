@@ -17,7 +17,7 @@ module JapaneseTrendKeywords
     end
 
     def getAll
-      RSS_URLS.map{|key, value| self.get(key)}
+      RSS_CONFIGS.map{|key, value| self.get(key)}
     end
 
     private
