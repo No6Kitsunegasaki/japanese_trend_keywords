@@ -8,12 +8,13 @@ module JapaneseTrendKeywords
   class JapaneseTrendKeywords
     DEFAULT_NAME = :hatena
     RSS_URLS = {
-      :hatena => 'http://d.hatena.ne.jp/hotkeyword?mode=rss',
+      hatena: {url: 'http://d.hatena.ne.jp/hotkeyword?mode=rss', path: ['RDF', 'item']},
+      yahoo_burst: {url: 'http://searchranking.yahoo.co.jp/rss/burst_ranking-rss.xml', path: ['rss', 'channel', 'item']},
     }.freeze
 
     def get(name)
       name = DEFAULT_NAME if name.nil?
-      generateGetResult(name, RSS_URLS[name])
+      generateGetResult(name, RSS_URLS[name][:url], RSS_URLS[name][:path])
     end
 
     def getAll
@@ -22,11 +23,11 @@ module JapaneseTrendKeywords
 
     private
 
-    def generateGetResult(name, url)
+    def generateGetResult(name, url, path)
       {
         :name => name,
         :url => url,
-        :keywords => convertIntoKeywords(getRss(url)),
+        :keywords => convertIntoKeywords(getRss(url), path),
       }
     end
 
@@ -34,8 +35,11 @@ module JapaneseTrendKeywords
       Hash.from_xml open(uri).read
     end
 
-    def convertIntoKeywords(hash)
-      items = hash['RDF']['item']
+    def convertIntoKeywords(hash, path)
+      items = hash
+      path.each do |i|
+        items = items[i]
+      end
       if items.blank?
         []
       elsif items.instance_of?(Hash)
