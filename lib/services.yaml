@@ -1,0 +1,21 @@
+:hatena:
+  :url: 'http://d.hatena.ne.jp/hotkeyword?mode=rss'
+  :path:
+    :title:
+      - 'RDF'
+      - 'channel'
+      - 'title'
+    :item:
+      - 'RDF'
+      - 'item'
+:yahoo_burst:
+  :url: 'http://searchranking.yahoo.co.jp/rss/burst_ranking-rss.xml'
+  :path:
+    :title:
+      - 'rss'
+      - 'channel'
+      - 'title'
+    :item:
+      - 'rss'
+      - 'channel'
+      - 'item'
