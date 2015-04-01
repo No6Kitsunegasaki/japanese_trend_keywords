@@ -19,3 +19,36 @@
       - 'rss'
       - 'channel'
       - 'item'
+:yahoo_total_ranking_people:
+  :url: 'http://searchranking.yahoo.co.jp/rss/total_ranking-people-rss.xml'
+  :path:
+    :title:
+      - 'rss'
+      - 'channel'
+      - 'title'
+    :item:
+      - 'rss'
+      - 'channel'
+      - 'item'
+:twipple:
+  :url: 'http://tr.twipple.jp/rss/hotword.xml'
+  :path:
+    :title:
+      - 'rss'
+      - 'channel'
+      - 'description'
+    :item:
+      - 'rss'
+      - 'channel'
+      - 'item'
+:cookpad:
+  :url: 'http://rssc.dokoda.jp/r/c3805c6e3a9fabc76e270bac8d13b317/http/cookpad.com/trend_keyword'
+  :path:
+    :title:
+      - 'rss'
+      - 'channel'
+      - 'title'
+    :item:
+      - 'rss'
+      - 'channel'
+      - 'item'
