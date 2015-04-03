@@ -23,3 +23,8 @@
   :xpath:
     :title: '/html/head/title'
     :item: '//span[@class="keyword"]/a'
+:amazon:
+  :url: 'http://www.amazon.co.jp/gp/bestsellers/books/ref=sv_b_3'
+  :xpath:
+    :title: '//html/head/title'
+    :item: '//div[@class="zg_title"]/a'
