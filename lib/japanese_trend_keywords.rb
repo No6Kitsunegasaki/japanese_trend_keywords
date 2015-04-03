@@ -2,6 +2,7 @@
 require 'active_support'
 require 'active_support/core_ext'
 require "japanese_trend_keywords/version"
+require 'kconv'
 require 'open-uri'
 require 'nokogiri'
 require 'yaml'
@@ -27,19 +28,15 @@ module JapaneseTrendKeywords
       doc = getDocument(url)
       {
         :name => name,
-        :title => URI.decode(getByXPath(doc, xpath[:title])[0]).encode("UTF-8"),
-        :url => url.encode("UTF-8"),
-        :keywords => getByXPath(doc, xpath[:item]).map{|word| URI.decode(word).encode("UTF-8")},
+        :title => getByXPath(doc, xpath[:title])[0],
+        :url => url,
+        :keywords => getByXPath(doc, xpath[:item]),
       }
     end
 
     def getDocument(url)
-      charset = nil
-      html = open(url) do |f|
-        charset = f.charset
-        f.read
-      end
-      Nokogiri::HTML.parse(html, nil, charset)
+      html = open(url, "r:binary").read
+      Nokogiri::HTML.parse(html.toutf8, nil, "utf-8")
     end
 
 
