@@ -27,9 +27,9 @@ module JapaneseTrendKeywords
       doc = getDocument(url)
       {
         :name => name,
-        :title => getByXPath(doc, xpath[:title])[0],
+        :title => URI.decode(getByXPath(doc, xpath[:title])[0]).encode("UTF-8"),
         :url => url,
-        :keywords => getByXPath(doc, xpath[:item]),
+        :keywords => getByXPath(doc, xpath[:item]).map{|word| URI.decode(word).encode("UTF-8")},
       }
     end
 
@@ -41,6 +41,7 @@ module JapaneseTrendKeywords
       end
       Nokogiri::HTML.parse(html, nil, charset)
     end
+
 
     def getByXPath(doc, xpath)
       doc.xpath(xpath).map{|item| item.inner_html}
