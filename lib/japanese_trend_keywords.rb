@@ -3,6 +3,7 @@ require 'active_support'
 require 'active_support/core_ext'
 require "japanese_trend_keywords/version"
 require 'open-uri'
+require 'nokogiri'
 require 'yaml'
 
 module JapaneseTrendKeywords
@@ -13,7 +14,7 @@ module JapaneseTrendKeywords
     def get(name)
       name = DEFAULT_NAME if name.nil?
       config = RSS_CONFIGS[name]
-      generateGetResult(name, config[:url], config[:path])
+      generateGetResult(name, config[:url], config[:xpath])
     end
 
     def getAll
@@ -22,40 +23,27 @@ module JapaneseTrendKeywords
 
     private
 
-    def generateGetResult(name, url, path)
-      rss = getRss(url)
+    def generateGetResult(name, url, xpath)
+      doc = getDocument(url)
       {
         :name => name,
-        :title => convertIntoTitle(rss, path[:title]),
+        :title => getByXPath(doc, xpath[:title])[0],
         :url => url,
-        :keywords => convertIntoKeywords(rss, path[:item]),
+        :keywords => getByXPath(doc, xpath[:item]),
       }
     end
 
-    def getRss(uri)
-      Hash.from_xml open(uri).read
+    def getDocument(url)
+      charset = nil
+      html = open(url) do |f|
+        charset = f.charset
+        f.read
+      end
+      Nokogiri::HTML.parse(html, nil, charset)
     end
 
-    def convertIntoTitle(hash, path)
-      title = hash
-      path.each do |i|
-        title = title[i]
-      end
-      title
-    end
-
-    def convertIntoKeywords(hash, path)
-      items = hash
-      path.each do |i|
-        items = items[i]
-      end
-      if items.blank?
-        []
-      elsif items.instance_of?(Hash)
-        [items['title']]
-      elsif items.instance_of?(Array)
-        items.map{|item| item['title']}
-      end
+    def getByXPath(doc, xpath)
+      doc.xpath(xpath).map{|item| item.inner_html}
     end
   end
 end

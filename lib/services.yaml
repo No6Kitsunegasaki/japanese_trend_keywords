@@ -1,54 +1,25 @@
 :hatena:
   :url: 'http://d.hatena.ne.jp/hotkeyword?mode=rss'
-  :path:
-    :title:
-      - 'RDF'
-      - 'channel'
-      - 'title'
-    :item:
-      - 'RDF'
-      - 'item'
+  :xpath:
+    :title: '//channel/title'
+    :item: '//item/title'
 :yahoo_burst:
   :url: 'http://searchranking.yahoo.co.jp/rss/burst_ranking-rss.xml'
-  :path:
-    :title:
-      - 'rss'
-      - 'channel'
-      - 'title'
-    :item:
-      - 'rss'
-      - 'channel'
-      - 'item'
+  :xpath:
+    :title: '//channel/title'
+    :item: '//item/title'
 :yahoo_total_ranking_people:
   :url: 'http://searchranking.yahoo.co.jp/rss/total_ranking-people-rss.xml'
-  :path:
-    :title:
-      - 'rss'
-      - 'channel'
-      - 'title'
-    :item:
-      - 'rss'
-      - 'channel'
-      - 'item'
+  :xpath:
+    :title: '//channel/title'
+    :item: '//item/title'
 :twipple:
   :url: 'http://tr.twipple.jp/rss/hotword.xml'
-  :path:
-    :title:
-      - 'rss'
-      - 'channel'
-      - 'description'
-    :item:
-      - 'rss'
-      - 'channel'
-      - 'item'
+  :xpath:
+    :title: '//description'
+    :item: '//item/title'
 :cookpad:
-  :url: 'http://rssc.dokoda.jp/r/c3805c6e3a9fabc76e270bac8d13b317/http/cookpad.com/trend_keyword'
-  :path:
-    :title:
-      - 'rss'
-      - 'channel'
-      - 'title'
-    :item:
-      - 'rss'
-      - 'channel'
-      - 'item'
+  :url: 'http://cookpad.com/trend_keyword'
+  :xpath:
+    :title: '/html/head/title'
+    :item: '//span[@class="keyword"]/a'

@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency "activesupport", "~> 4.0"
+  spec.add_runtime_dependency "nokogiri", "~> 1.6"
 
   spec.add_development_dependency "test-unit-rr", "~> 1.0"
   spec.add_development_dependency "test-unit", "~> 3.0"
