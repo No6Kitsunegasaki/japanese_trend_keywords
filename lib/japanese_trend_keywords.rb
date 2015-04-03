@@ -36,7 +36,7 @@ module JapaneseTrendKeywords
 
     def getDocument(url)
       html = open(url, "r:binary").read
-      Nokogiri::HTML.parse(html.toutf8, nil, "utf-8")
+      Nokogiri::HTML.parse(html.toutf8.gsub(/\xEF\xBB\xBF|\xEF\xBF\xBE/,""), nil, "utf-8")
     end
 
 
