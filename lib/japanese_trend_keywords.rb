@@ -27,9 +27,9 @@ module JapaneseTrendKeywords
       doc = getDocument(url)
       {
         :name => name,
-        :title => URI.decode(getByXPath(doc, xpath[:title])[0].encode(Encoding::SJIS, :invalid => :replace, :undef => :replace)).encode("UTF-8"),
-        :url => url,
-        :keywords => getByXPath(doc, xpath[:item]).map{|word| URI.decode(word.encode(Encoding::SJIS, :invalid => :replace, :undef => :replace)).encode("UTF-8")},
+        :title => URI.decode(getByXPath(doc, xpath[:title])[0]).encode("UTF-8"),
+        :url => url.encode("UTF-8"),
+        :keywords => getByXPath(doc, xpath[:item]).map{|word| URI.decode(word).encode("UTF-8")},
       }
     end
 
