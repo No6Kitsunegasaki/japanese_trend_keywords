@@ -1,0 +1,33 @@
+:hatena:
+  :url: 'http://d.hatena.ne.jp/hotkeyword?mode=rss'
+  :xpath:
+    :title: '//channel/title'
+    :item: '//item/title'
+:yahoo_burst:
+  :url: 'http://searchranking.yahoo.co.jp/rss/burst_ranking-rss.xml'
+  :xpath:
+    :title: '//channel/title'
+    :item: '//item/title'
+:yahoo_total_ranking_people:
+  :url: 'http://searchranking.yahoo.co.jp/rss/total_ranking-people-rss.xml'
+  :xpath:
+    :title: '//channel/title'
+    :item: '//item/title'
+:twipple:
+  :url: 'http://tr.twipple.jp/rss/hotword.xml'
+  :xpath:
+    :title: '//description'
+    :item: '//item/title'
+  :split:
+    :index: 0
+    :pattern: ' | '
+:cookpad:
+  :url: 'http://cookpad.com/trend_keyword'
+  :xpath:
+    :title: '/html/head/title'
+    :item: '//span[@class="keyword"]/a'
+:amazon:
+  :url: 'http://www.amazon.co.jp/gp/bestsellers/books/ref=sv_b_3'
+  :xpath:
+    :title: '//html/head/title'
+    :item: '//div[@class="zg_title"]/a'
