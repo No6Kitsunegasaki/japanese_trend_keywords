@@ -21,6 +21,21 @@
   :split:
     :index: 0
     :pattern: ' | '
+:google:
+  :url: 'https://www.google.co.jp/trends/hottrends/atom/feed?pn=p4'
+  :xpath:
+    :title: '//channel/title'
+    :item: '//item/title'
+:goo_search:
+  :url: 'http://search.goo.ne.jp/rss/newkw.rdf'
+  :xpath:
+    :title: '//channel/title'
+    :item: '//item/title'
+:goo_multimedia_search:
+  :url: 'http://bsearch.goo.ne.jp/rss/newkw.rdf'
+  :xpath:
+    :title: '//channel/title'
+    :item: '//item/title'
 :cookpad:
   :url: 'http://cookpad.com/trend_keyword'
   :xpath:
